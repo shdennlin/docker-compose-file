@@ -13,8 +13,8 @@ services:
     ports:
       - 8080:3000
     environment:
-      REDMINE_DB_POSTGRES: 
+      REDMINE_DB_POSTGRES: 10.100.96.3
       REDMINE_DB_USERNAME: redmine
-      REDMINE_DB_PASSWORD: 
+      REDMINE_DB_PASSWORD: sH^QkHz2jC*!sDA2
       REDMINE_PLUGINS_MIGRATE: "true"
 
