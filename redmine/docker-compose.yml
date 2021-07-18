@@ -1,20 +1,57 @@
 version: '3.8'
 
 services:
-  # https://hub.docker.com/_/redmine
-  redmine:
-    container_name: 'redmine'
-    image: redmine:latest
-    restart: always
-    volumes:
-      - ./redmine-plugins:/usr/src/redmine/plugins
-      - ./redmine-themes:/usr/src/redmine/public/themes
-      - ./redmine-data:/usr/src/redmine/files
-    ports:
-      - 8080:3000
-    environment:
-      REDMINE_DB_POSTGRES: 10.100.96.3
-      REDMINE_DB_USERNAME: redmine
-      REDMINE_DB_PASSWORD: sH^QkHz2jC*!sDA2
-      REDMINE_PLUGINS_MIGRATE: "true"
 
+    # https://hub.docker.com/_/redmine
+    redmine:
+        container_name: 'redmine'
+        image: redmine:4.2.1
+        hostname: redmine
+        restart: always
+        volumes:
+            - ./redmine-plugins:/usr/src/redmine/plugins
+            - ./redmine-themes:/usr/src/redmine/public/themes
+            - ./redmine-data:/usr/src/redmine/files
+        ports:
+            - "3000:3000"
+        environment:
+            REDMINE_DB_POSTGRES: postgres
+            REDMINE_DB_USERNAME: redmine
+            REDMINE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+            REDMINE_PLUGINS_MIGRATE: "true"
+        depends_on:
+          - postgres
+
+    # https://hub.docker.com/_/postgres
+    postgres:
+        container_name: 'postgres'
+        image: postgres:13
+        hostname: postgres
+        restart: always
+        environment:
+            POSTGRES_USER: redmine
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            PGDATA: /var/lib/postgresql/data
+        volumes:
+            - postgres:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+
+    # https://hub.docker.com/r/biarms/pgadmin4
+    pgadmin4:
+        container_name: 'pgadmin4'
+        image: biarms/pgadmin4:4.21
+        hostname: pgadmin4
+        restart: always
+        ports:
+            - "5050:5050"
+        environment:
+            PGADMIN_DEFAULT_EMAIL: shawndennislin@gmail.com
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+        volumes:
+            - pgadmin:/pgadmin
+        depends_on:
+            - postgres
+volumes:
+    postgres:
+    pgadmin:

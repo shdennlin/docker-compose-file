@@ -1,0 +1,5 @@
+* Redmine Plugins List
+
+1. [[https://www.redmine.org/plugins/redmine_agile][redmine_agile]]
+2. [[https://www.redmine.org/plugins/redmine_checklists][redmine_checklists]]
+3. [[https://redmine.org/plugins/redmine_wysiwyg_editor][WYSIWYG Editor]]
