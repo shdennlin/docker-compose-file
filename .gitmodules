@@ -4,3 +4,6 @@
 [submodule "redmine/redmine-themes/PurpleMine2"]
 	path = redmine/redmine-themes/PurpleMine2
 	url = https://github.com/mrliptontea/PurpleMine2.git
+[submodule "redmine/redmine-plugins/redmine_issue_dynamic_edit"]
+	path = redmine/redmine-plugins/redmine_issue_dynamic_edit
+	url = https://github.com/Ilogeek/redmine_issue_dynamic_edit.git

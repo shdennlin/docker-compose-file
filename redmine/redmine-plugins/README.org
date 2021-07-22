@@ -3,3 +3,4 @@
 1. [[https://www.redmine.org/plugins/redmine_agile][redmine_agile]]
 2. [[https://www.redmine.org/plugins/redmine_checklists][redmine_checklists]]
 3. [[https://redmine.org/plugins/redmine_wysiwyg_editor][WYSIWYG Editor]]
+4. [[https://github.com/Ilogeek/redmine_issue_dynamic_edit][redmine_issue_dynamic_edit]]
